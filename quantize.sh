@@ -2,10 +2,10 @@
 # Agnes-3.0-Flash Preview (folded Qwen3.5 graph, bf16 ~62 GiB) -> NVFP4 (~20 GiB)
 # Needs ~70 GiB free: stop the brain first (GLM dual is TP2 -> stop on the head).
 set -eo pipefail
-VENV=/home/user/quant-env
-INPUT=/home/user/models/agnes-3.0-flash-qwen35-bf16
-OUTPUT=/home/user/models/agnes-3.0-flash-nvfp4
-LOG=/home/user/.local/state/agnes/quant.log
+VENV=$HOME/quant-env
+INPUT=$HOME/models/agnes-3.0-flash-qwen35-bf16
+OUTPUT=$HOME/models/agnes-3.0-flash-nvfp4
+LOG=$HOME/.local/state/agnes/quant.log
 D="$(cd "$(dirname "$0")" && pwd)"
 [ -f "$INPUT/model.safetensors.index.json" ] || { echo "no folded source"; exit 1; }
 source "$VENV/bin/activate"

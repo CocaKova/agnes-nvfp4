@@ -21,8 +21,8 @@ from collections import OrderedDict
 from safetensors import safe_open
 from safetensors.torch import save_file
 
-SRC = sys.argv[1] if len(sys.argv) > 1 else "/home/user/models/agnes-3.0-flash-bf16"
-DST = sys.argv[2] if len(sys.argv) > 2 else "/home/user/models/agnes-3.0-flash-qwen35-bf16"
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/models/agnes-3.0-flash-bf16")
+DST = sys.argv[2] if len(sys.argv) > 2 else os.path.expanduser("~/models/agnes-3.0-flash-qwen35-bf16")
 FLUSH_GIB = float(os.environ.get("FLUSH_GIB", "3"))
 os.makedirs(DST, exist_ok=True)
 

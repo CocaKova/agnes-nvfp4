@@ -2,13 +2,13 @@
 # Serve the NVFP4 build on one DGX Spark with the local vLLM install (0.20.2rc1 tree, sm_121a).
 # Same flags that served qwen3.8-27b-nvfp4-mtp here (compressed-tensors W4A4 + MTP + flashinfer).
 set -eo pipefail
-MODEL="${MODEL:-/home/user/models/agnes-3.0-flash-nvfp4}"
+MODEL="${MODEL:-$HOME/models/agnes-3.0-flash-nvfp4}"
 PORT="${PORT:-8001}"
 UTIL="${UTIL:-0.55}"
 MAXLEN="${MAXLEN:-131072}"
 SPEC_N="${SPEC_N:-3}"
-LOG="${LOG:-/home/user/.local/state/agnes/serve.log}"
-source /home/user/vllm-install/vllm_env.sh
+LOG="${LOG:-$HOME/.local/state/agnes/serve.log}"
+source $HOME/vllm-install/vllm_env.sh
 export ENABLE_NVFP4_SM100=0 VLLM_USE_DEEP_GEMM=0
 SPEC_ARG=""; [ "$SPEC_N" != "0" ] && SPEC_ARG="--speculative-config {\"method\":\"mtp\",\"num_speculative_tokens\":$SPEC_N}"
 exec python -m vllm.entrypoints.openai.api_server \

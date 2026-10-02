@@ -22,8 +22,8 @@ from datasets import load_dataset, Dataset
 from llmcompressor import oneshot
 from llmcompressor.modifiers.quantization import QuantizationModifier
 
-MODEL   = "/home/user/models/agnes-3.0-flash-qwen35-bf16"
-OUTPUT  = "/home/user/models/agnes-3.0-flash-nvfp4"
+MODEL   = os.path.expanduser("~/models/agnes-3.0-flash-qwen35-bf16")
+OUTPUT  = os.path.expanduser("~/models/agnes-3.0-flash-nvfp4")
 MAX_SEQ = int(os.environ.get("MAX_SEQ", 4096))  # ref build used 8192 across 8 GPUs; halved for the single-GB10 unified-memory box
 N_CAL   = int(os.environ.get("N_CAL", 32))
 
